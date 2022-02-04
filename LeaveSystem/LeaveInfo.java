@@ -28,6 +28,21 @@ public class LeaveInfo implements ActionListener {
     SpinnerModel value5 = new SpinnerNumberModel(1, 0, 5, 1);
     JSpinner spinner1, spinner2, spinner3, spinner4, spinner5;
 
+    public void connection() {
+        try {
+          // Class.forName("com.mysql.jdbc.Driver");
+          con =
+            DriverManager.getConnection(
+              "jdbc:mysql://remotemysql.com/blUqVPKNsO",
+              "blUqVPKNsO",
+              "jaoG4anq0g"
+            );
+        } catch (Exception ex) {
+          // Logger.getLogger(ApplyFrame.Class.getName()).log(Level.SEVERE,null,ex);
+          ex.printStackTrace();
+        }
+    }
+
     public LeaveInfo() {
         JFrame lFrame = new JFrame();
         lFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -172,7 +187,8 @@ public class LeaveInfo implements ActionListener {
             // Connection();
             try {
                 String query = "SELECT empno FROM `registration` WHERE 1";
-                con = DriverManager.getConnection("jdbc:mysql://remotemysql.com/blUqVPKNsO","blUqVPKNsO","jaoG4anq0g");
+                //con = DriverManager.getConnection("jdbc:mysql://remotemysql.com/blUqVPKNsO","blUqVPKNsO","jaoG4anq0g");
+                connection();
                 pst = con.prepareStatement(query);
                 ResultSet rs = pst.executeQuery();
                 String empvalue;
