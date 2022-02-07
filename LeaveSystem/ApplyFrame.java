@@ -334,13 +334,10 @@ public class ApplyFrame extends JFrame implements ActionListener {
     }
   }
 
+  public void loadCredentials(){
+    String empno = box.getSelectedItem().toString();
 
-  @Override
-  public void actionPerformed(ActionEvent e) {
-    if (e.getSource() == box) {
-      String empno = box.getSelectedItem().toString();
-
-      connection();
+    connection();
       String query =
         "SELECT `fname`, `lname`, `gender`,`category` FROM `registration` WHERE empno = ?";
       try {
@@ -372,13 +369,10 @@ public class ApplyFrame extends JFrame implements ActionListener {
         JOptionPane.showMessageDialog(null, e1);
         e1.printStackTrace();
       }
-    } else if (e.getSource() == ok) {
-      apply.setTitle("USER LEAVE APPLICATION");
-      app2.setVisible(true);
-      ok.setEnabled(false);
-      ok.setBackground(null);
-    } else if (e.getSource() == submit) {
-      loadLeave();
+  }
+
+  public void dayAction(){
+    loadLeave();
       int bleave = 0;
 
       String empno = box.getSelectedItem().toString();
@@ -477,7 +471,7 @@ public class ApplyFrame extends JFrame implements ActionListener {
             pst3.executeUpdate();
             JOptionPane.showMessageDialog(
               this,
-              "Your Materity Leave has been updated."
+              "Your Maternity Leave has been updated."
             );
             int response = JOptionPane.showConfirmDialog(
               null,
@@ -586,6 +580,23 @@ public class ApplyFrame extends JFrame implements ActionListener {
           JOptionPane.WARNING_MESSAGE
         );
       }
+  }
+
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == box) {
+      loadCredentials();
+
+    } else if (e.getSource() == ok) {
+      apply.setTitle("USER LEAVE APPLICATION");
+      app2.setVisible(true);
+      ok.setEnabled(false);
+      ok.setBackground(null);
+
+    } else if (e.getSource() == submit) {
+      dayAction();
+
     } else if (e.getSource() == rannual) {
       spinner.setModel(value1);
     } else if (e.getSource() == rpat) {

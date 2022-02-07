@@ -214,6 +214,7 @@ public class ViewUserInfo implements ActionListener {
     } else if (e.getSource() == refresh) {
       view.dispose();
       new ViewUserInfo();
+      //loadRegister();
     } else if (e.getSource() == cancel) {
       view.dispose();
       new ViewFrame();
