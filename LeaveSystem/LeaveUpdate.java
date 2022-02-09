@@ -35,6 +35,21 @@ public class LeaveUpdate implements ActionListener {
   JSpinner spinner4;
   JSpinner spinner5;
 
+  public void connection() {
+    try {
+      // Class.forName("com.mysql.jdbc.Driver");
+      con =
+        DriverManager.getConnection(
+          "jdbc:mysql://remotemysql.com/blUqVPKNsO",
+          "blUqVPKNsO",
+          "jaoG4anq0g"
+        );
+    } catch (Exception ex) {
+      // Logger.getLogger(ApplyFrame.Class.getName()).log(Level.SEVERE,null,ex);
+      ex.printStackTrace();
+    }
+}
+
   public LeaveUpdate() {
     lFrame = new JFrame();
     lFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -179,14 +194,8 @@ public class LeaveUpdate implements ActionListener {
       String year = field.getText();
 
       try {
-        String query =
-          "SELECT registration.*,leaveinfo.* FROM registration LEFT JOIN leaveinfo  ON registration.empno = leaveinfo.empno WHERE leaveinfo.empno IS NULL";
-        con =
-          DriverManager.getConnection(
-            "jdbc:mysql://remotemysql.com/blUqVPKNsO",
-            "blUqVPKNsO",
-            "jaoG4anq0g"
-          );
+        String query = "SELECT registration.*,leaveinfo.* FROM registration LEFT JOIN leaveinfo  ON registration.empno = leaveinfo.empno WHERE leaveinfo.empno IS NULL";
+        connection();
         pst = con.prepareStatement(query);
         ResultSet rs = pst.executeQuery();
         String empvalue;
