@@ -183,7 +183,7 @@ public class DeleteRegister implements ActionListener {
     } catch (Exception e) {
       JOptionPane.showMessageDialog(
         null,
-        "Ooops!! " + e
+        "Ooops problem!! " + e
       );
       e.printStackTrace();
     }
