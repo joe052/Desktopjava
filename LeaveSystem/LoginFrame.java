@@ -133,6 +133,8 @@ public class LoginFrame implements ActionListener, KeyListener {
             "ACCESS DENIED!!",
             JOptionPane.WARNING_MESSAGE
           );
+          idField.setText("");
+          passField.setText("");
         }
       } else {
         messLabel.setForeground(Color.red);
@@ -144,6 +146,8 @@ public class LoginFrame implements ActionListener, KeyListener {
           "ACCESS DENIED!!",
           JOptionPane.WARNING_MESSAGE
         );
+        idField.setText("");
+        passField.setText("");
       }
     }
   }
@@ -171,6 +175,8 @@ public class LoginFrame implements ActionListener, KeyListener {
             "ACCESS DENIED!!",
             JOptionPane.WARNING_MESSAGE
           );
+          idField.setText("");
+          passField.setText("");
         }
       } else {
         messLabel.setForeground(Color.red);
@@ -182,6 +188,8 @@ public class LoginFrame implements ActionListener, KeyListener {
           "ACCESS DENIED!!",
           JOptionPane.WARNING_MESSAGE
         );
+        idField.setText("");
+        passField.setText("");
       }
     }
   }
